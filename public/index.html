@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <style>
+.door{ position:relative; width:400px; height:300px; overflow:hidden; border:2px solid #000; background:#000;
+}
+  .door:before,.door:after{ content:''; position:absolute; left:0; width:0; height:0; overflow:hidden; border-color:#000 transparent transparent transparent; border-style:solid; border-width:0 200px; z-index:2; transition:all .8s ease;}
+  .door:before{ top:0;}
+  .door:after{ bottom:0; border-color:transparent transparent #000 transparent;}
+  .door.enter:before,.door.enter:after{ border-width:40px 200px;}
+  .door-left, .door-right{ position:relative; float:left; width:50%; height:100%; background:#f00; box-sizing:border-box; transition:all .5s ease;}
+  .door-left{ border-right:2px solid #000; -webkit-transform-origin:0 0;}
+  .door-left:before,.door-right:before{ content:''; position:absolute; width:10px; height:10px; top:50%; margin-top:-5px; border-radius:50%; background:#000;}
+ .door-left:before{ right:5px;}
+ .door-right:before{ left:5px;}
+ .door-right{ border-left:2px solid #000; -webkit-transform-origin:100% 0;}
+ .door.enter .door-left{ -webkit-transform:rotateY(-90deg);   transition:transform 3s Linear}
+ .door.enter .door-right{ -webkit-transform:rotateY(90deg);   transition:transform 3s Linear}
+ .enterWebsite{    position: absolute;
+    left: 42%;
+    top: 40%;
+    background-color: #2daebf;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 11px;
+    cursor: pointer;
+    -webkit-animation-name: bluePulse; -webkit-animation-duration: 4s; 
+    -webkit-animation-iteration-count: infinite;
+        font-weight: 700;
+    font-size: 18px;
+    font-family: sans-serif;
+    }
+    @-webkit-keyframes bluePulse {
+  from { background-color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+  30% { background-color: #7ec6d8; -webkit-box-shadow: 0 0 18px #7ec6d8; }
+  60% { background-color: #2daebf; -webkit-box-shadow: 0 0 28px #2daebf; }
+  90% { background-color: #27def6; -webkit-box-shadow: 0 0 38px #27def6; }
+  to { background-color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+}
+</style>
+</head>
+
+<body>
+    <div class="door">
+        <div class="door-left"></div>
+        <div class="door-right"></div>
+        <div class="enterWebsite">进入网站</div>
+    </div>
+</body>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script>
+    jQuery(function ($) {
+        $('.enterWebsite').on('click', function () {
+            $(this).parents('.door').addClass('enter');
+            $(this).hide();
+            setTimeout(function () {
+                location.href = "http://www.w3school.com.cn/jsref/met_win_settimeout.asp";
+            }, 5000)
+        });
+    })
+</script>
+
+</html>
